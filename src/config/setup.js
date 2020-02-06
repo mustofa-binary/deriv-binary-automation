@@ -3,8 +3,6 @@ const chai = require("chai");
 const driver = require("./driver");
 const { By, until } = require("selenium-webdriver");
 
-// agent: agent+1580828113@binary.com
-// client: client+1580828113@binary.com
 const setup_config = {
   test_url: process.env.test_url,
   email: process.env.email,
