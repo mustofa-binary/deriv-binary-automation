@@ -9,11 +9,16 @@ describe("Login deriv", () => {
       await driver.findElement(By.id("proceed-link")).click();
     }
     await driver.wait(until.elementLocated(By.id("dt_login_button")));
-    await driver.executeScript(`
-            localStorage.setItem("config.app_id", "${setup_config.app_id}")
-            localStorage.setItem("config.server_url", "${setup_config.server_url}")
-        `);
-    await driver.findElement(By.id("dt_login_button")).click();
+    if (!!setup_config.app_id && !!setup_config.server_url) {
+      console.log("hi");
+      await driver.executeScript(`
+        localStorage.setItem("config.app_id", "${setup_config.app_id}")
+        localStorage.setItem("config.server_url", "${setup_config.server_url}")
+      `);
+      await driver.findElement(By.id("dt_login_button")).click();
+    } else {
+      await driver.findElement(By.id("dt_login_button")).click();
+    }
   });
 
   it("Login to oauth", async () => {

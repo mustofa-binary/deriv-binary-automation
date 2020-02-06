@@ -1,13 +1,16 @@
+require("dotenv").config({ path: "/.env" });
 const chai = require("chai");
 const driver = require("./driver");
 const { By, until } = require("selenium-webdriver");
 
+// agent: agent+1580828113@binary.com
+// client: client+1580828113@binary.com
 const setup_config = {
-  test_url: "https://localhost.binary.sx",
-  app_id: "19112",
-  server_url: "binaryqa10.com",
-  email: "client+1580828113@binary.com",
-  password: "binary123"
+  test_url: process.env.test_url,
+  email: process.env.email,
+  password: process.env.password,
+  app_id: process.env.app_id,
+  server_url: process.env.server_url
 };
 
 exports.setup_config = setup_config;
